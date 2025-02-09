@@ -1,0 +1,21 @@
+{
+    "name": "Project Task",
+    "doctype": "DocType",
+    "module": "Project Management",
+    "fields": [
+        {
+            "fieldname": "project",
+            "label": "Project",
+            "fieldtype": "Link",
+            "options": "Project",
+            "reqd": 1
+        },
+        {
+            "fieldname": "task",
+            "label": "Task",
+            "fieldtype": "Link",
+            "options": "Task",
+            "reqd": 1
+        }
+    ]
+}
