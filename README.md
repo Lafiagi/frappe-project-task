@@ -54,14 +54,7 @@ bench start
 - Implement caching for frequently accessed data
 - Use pagination for large datasets
 
-### 2. Memory Leaks
-**Problem**: System memory usage increasing over time
-**Solution**:
-- Clear cache periodically using scheduled jobs
-- Implement proper garbage collection
-- Monitor memory usage using Frappe's built-in monitoring tools
-
-### 3. Database Connection Issues
+### 2. Database Connection Issues
 **Problem**: Intermittent database connection errors
 **Solution**:
 - Check connection pool settings
@@ -100,9 +93,3 @@ bench setup monitoring
 ```bash
 bench doctor
 ```
-
-3. Check Slow Queries:
-```sql
-SELECT * FROM INFORMATION_SCHEMA.PROCESSLIST WHERE TIME > 5;
-```
-# frappe-project-task

@@ -1,9 +1,12 @@
 app_name = "project_management"
 app_title = "Project Management"
-app_publisher = "Sadiq"
+app_publisher = "Abubakar Sadiq"
 app_description = "Project managment assessment app"
-app_email = "wehmu07@gmail.com"
+app_email = "abubakarlafiagi@gmail.com"
 app_license = "mit"
+
+
+after_install = "project_management.setup.after_install"
 
 # Apps
 # ------------------
@@ -244,4 +247,3 @@ app_license = "mit"
 # default_log_clearing_doctypes = {
 # 	"Logging DocType Name": 30  # days to retain logs
 # }
-
