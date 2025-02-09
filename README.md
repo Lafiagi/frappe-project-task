@@ -1,33 +1,108 @@
-### Project Management
+# Project Management System - Frappe Framework
 
-Project managment assessment app
+## Prerequisites
+- Python 3.10+
+- Node.js 14+
+- MariaDB
+- Redis
 
-### Installation
+## Installation Steps
 
-You can install this app using the [bench](https://github.com/frappe/bench) CLI:
-
+1. Install bench:
 ```bash
-cd $PATH_TO_YOUR_BENCH
-bench get-app $URL_OF_THIS_REPO --branch develop
-bench install-app project_management
+pip install frappe-bench
 ```
 
-### Contributing
-
-This app uses `pre-commit` for code formatting and linting. Please [install pre-commit](https://pre-commit.com/#installation) and enable it for this repository:
-
+2. Initialize bench directory:
 ```bash
-cd apps/project_management
-pre-commit install
+bench init frappe-bench
+cd frappe-bench
 ```
 
-Pre-commit is configured to use the following tools for checking and formatting your code:
+3. Create new app:
+```bash
+bench new-app project_management
+```
 
-- ruff
-- eslint
-- prettier
-- pyupgrade
+4. Create new site:
+```bash
+bench new-site eglobal.local
+```
 
-### License
+5. Install app on site:
+```bash
+bench --site eglobal.local install-app project_management
+```
 
-mit
+6. Start development server:
+```bash
+bench start
+```
+
+
+
+
+# Debugging Guide for Project Management System
+
+## Common Issues and Solutions
+
+### 1. Slow API Performance
+**Problem**: API endpoints taking too long to respond
+**Solution**:
+- Implement proper indexing on frequently queried fields
+- Use batch fetching for related records
+- Implement caching for frequently accessed data
+- Use pagination for large datasets
+
+### 2. Memory Leaks
+**Problem**: System memory usage increasing over time
+**Solution**:
+- Clear cache periodically using scheduled jobs
+- Implement proper garbage collection
+- Monitor memory usage using Frappe's built-in monitoring tools
+
+### 3. Database Connection Issues
+**Problem**: Intermittent database connection errors
+**Solution**:
+- Check connection pool settings
+- Implement connection retry logic
+- Monitor and log connection states
+
+## Debugging Process
+
+1. Enable Verbose Logging:
+```python
+bench --site eglobal.local set-log-level debug
+```
+
+2. Check Error Logs:
+```bash
+bench --site eglobal.local show-logs
+```
+
+3. Profile Code Performance:
+```python
+import cProfile
+import frappe
+
+def profile_function():
+    cProfile.runctx('frappe.get_all("Task")', globals(), locals(), 'profile.stats')
+```
+
+## Performance Monitoring
+
+1. Setup Monitoring:
+```bash
+bench setup monitoring
+```
+
+2. Monitor System Health:
+```bash
+bench doctor
+```
+
+3. Check Slow Queries:
+```sql
+SELECT * FROM INFORMATION_SCHEMA.PROCESSLIST WHERE TIME > 5;
+```
+# frappe-project-task
